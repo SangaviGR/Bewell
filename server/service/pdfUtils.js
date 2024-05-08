@@ -9,7 +9,6 @@ const axios = require("axios");
 const Address = require('../models/addressSchema');
 const Signature = require('../models/signatureSchema');
 const Patient = require('../models/patient');
-const moment = require('moment'); // Import moment.js
 async function createPdf(input, output, data) {
   try {
     // Create address objects
@@ -27,11 +26,6 @@ async function createPdf(input, output, data) {
       postalCode: data["postalCodeResidence"] || "",
     });
 
-    // // Save the address objects to the database
-    // await mailingAddress.save();
-    // await residentialAddress.save();
-
-
     // Create address objects
     const mailingAddressA = new Address({
       apartmentNumber: data["childApartmentMailing"] || "",
@@ -47,9 +41,6 @@ async function createPdf(input, output, data) {
       postalCode: data["childPostalCodeResidence"] || "",
     });
 
-    // // Save the address objects to the database
-    // await mailingAddressA.save();
-    // await residentialAddressA.save();
 
     // Create address objects
     const mailingAddressB = new Address({
